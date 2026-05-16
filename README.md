@@ -17,9 +17,38 @@
 - Allowing for mouse clicks to prevent disconnection from the game. Very suitable for afk sessions packed with features.
 - Multi webhook support.
 - Macro session time report.
-## III. FAQs and common fixes
+## III. Linux quick start
+1) Install the Linux system packages used by the macro automation stack:
+```bash
+sudo apt update
+sudo apt install -y python3 python3-venv python3-tk python3-dev scrot tesseract-ocr xclip libxcb-xinerama0
+```
+
+2) Create a virtual environment and install the Python dependencies:
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+```
+
+3) Launch the cross-platform bootstrapper:
+```bash
+python biome_activity_source.py
+```
+
+The launcher now detects Linux and downloads a native Linux release asset when one exists, such as an AppImage, tarball, zip, or executable named `CoteabMacro`. You can override the asset name with `COTEAB_ASSET_NAME` if a release uses a custom filename:
+```bash
+COTEAB_ASSET_NAME=CoteabMacro-linux-x86_64.AppImage python biome_activity_source.py
+```
+
+Linux notes:
+- The macro uses screen capture, keyboard, and mouse automation. X11 sessions are the most compatible option; Wayland sessions may block global input or screenshots depending on your compositor settings.
+- Some keyboard/mouse backends may require elevated permissions or udev configuration on Linux.
+- The existing calibration and route files are coordinate-based, so you may need to recalibrate them for your Linux display scale, window manager decorations, and Roblox window size.
+
+## IV. FAQs and common fixes
 - Q: Macro has virus?<br>
-- A: No, it is Window's false positives. You can check out the source code or reverse engineer if you wish. Or put the file into a virtual machine/Virus Total. If you couldn't run your macro file due to false positives, try disabling your anti-virus, or refer to these tutorials: https://youtu.be/zGiNGnX5dYg?si=uC-qDKqVoC68txy8 https://youtu.be/_0_A9D0JeVo?si=ahXKpVYbs-HhOwSC<br>
+- A: On Windows, this can be caused by false positives. You can check out the source code or reverse engineer if you wish. Or put the file into a virtual machine/Virus Total. If you couldn't run your macro file due to false positives, try disabling your anti-virus, or refer to these tutorials: https://youtu.be/zGiNGnX5dYg?si=uC-qDKqVoC68txy8 https://youtu.be/_0_A9D0JeVo?si=ahXKpVYbs-HhOwSC<br>
 
 - Q: Macro using my rare potions?<br>
 - A: Either set a mouse delay to 1000-2000 milliseconds, or calibrate OCR-failsafe. <br>
@@ -31,10 +60,10 @@
 - A: https://i.postimg.cc/9X6tt3Wg/image.png<br>
 
 - Q: The macro wouldn't do anything it wouldn't start??<br>
-- A: There are two fixes: make sure the macro is inside a folder with your config file (and extracted). If that doesn't work run the macro as administrator.<br>
+- A: There are two fixes: make sure the macro is inside a folder with your config file (and extracted). If that does not work on Windows, run the macro as administrator; on Linux, check that your input/screenshot permissions are configured.<br>
 
 - Q: The macro opens but it's only black / white??<br>
-- A: Re-install / Install Webview2; https://developer.microsoft.com/en-us/microsoft-edge/webview2/?form=MA13LH<br>
+- A: On Windows, re-install / install WebView2: https://developer.microsoft.com/en-us/microsoft-edge/webview2/?form=MA13LH. On Linux, prefer an X11 session and verify that your AppImage or native binary has executable permissions.<br>
 
 - Q: The macro searches the item up then closes out instantly??<br>
 - A: One of two things you can do -- Recalibrate OCR-failsafe, or turn off the option completely. If you still want a "failsafe", set your input delay to 1000-2000 milliseconds.
