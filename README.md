@@ -1,13 +1,13 @@
-# Coteab Macro notice.
+# Coteab Linux Macro notice.
 ## I. Introduction
 1) New developer??!?
 - Hi everyone. I am Vapure, aka "criticize." or "C". I work with Akito and a few others to maintain this macro. If you have any inquires, feel free to contact us on discord, or by email `work.vapure@gmail.com`.
 - You might have seen me somewhere inside other Sol's RNG related servers.
 2) The project.
-- This project is a fork of the original [Noteab's Biome Macro](https://github.com/NotWindyZ/Noteab-Macro/).
+- This project is a Linux-focused fork of the original [Noteab's Biome Macro](https://github.com/NotWindyZ/Noteab-Macro/).
 - Abides by the [Apache 2.0 license](https://github.com/NotWindyZ/Noteab-Macro/blob/main/LICENSE).
-## II. About Coteab Macro
-1) What does Coteab Macro offer?
+## II. About Coteab Linux Macro
+1) What does Coteab Linux Macro offer?
 - Merchant detection using OCR detection
 - Auto purchase from merchants.
 - Biome detections, 99.99% accurate most of the time using logs reading method.
@@ -17,10 +17,37 @@
 - Allowing for mouse clicks to prevent disconnection from the game. Very suitable for afk sessions packed with features.
 - Multi webhook support.
 - Macro session time report.
-## III. FAQs and common fixes
-- Q: Macro has virus?<br>
-- A: No, it is Window's false positives. You can check out the source code or reverse engineer if you wish. Or put the file into a virtual machine/Virus Total. If you couldn't run your macro file due to false positives, try disabling your anti-virus, or refer to these tutorials: https://youtu.be/zGiNGnX5dYg?si=uC-qDKqVoC68txy8 https://youtu.be/_0_A9D0JeVo?si=ahXKpVYbs-HhOwSC<br>
+## III. Linux quick start
+1) Install the Linux system packages used by the macro automation stack:
+```bash
+sudo apt update
+sudo apt install -y python3 python3-venv python3-tk python3-dev scrot tesseract-ocr xclip libxcb-xinerama0 wine
+```
 
+2) Create a virtual environment and install the Python dependencies:
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+```
+
+3) Launch the Linux bootstrapper:
+```bash
+python biome_activity_source.py
+```
+
+The launcher is Linux-only. It first tries to download a native Linux release asset, such as an AppImage, tarball, zip, or executable named `CoteabMacro`. If the current release only publishes `CoteabMacro.exe`, the launcher falls back to downloading that file and running it through Wine so the bootstrapper can still launch on Linux today. You can override the asset name with `COTEAB_ASSET_NAME` if a release uses a custom filename:
+```bash
+COTEAB_ASSET_NAME=CoteabMacro-linux-x86_64.AppImage python biome_activity_source.py
+```
+
+Linux notes:
+- The macro uses screen capture, keyboard, and mouse automation. X11 sessions are the most compatible option; Wayland sessions may block global input or screenshots depending on your compositor settings.
+- If the release only has `CoteabMacro.exe`, Wine must be installed and able to run the packaged app.
+- Some keyboard/mouse backends may require elevated permissions or udev configuration on Linux.
+- The existing calibration and route files are coordinate-based, so you may need to recalibrate them for your Linux display scale, window manager decorations, and Roblox window size.
+
+## IV. FAQs and common fixes
 - Q: Macro using my rare potions?<br>
 - A: Either set a mouse delay to 1000-2000 milliseconds, or calibrate OCR-failsafe. <br>
 
@@ -31,10 +58,10 @@
 - A: https://i.postimg.cc/9X6tt3Wg/image.png<br>
 
 - Q: The macro wouldn't do anything it wouldn't start??<br>
-- A: There are two fixes: make sure the macro is inside a folder with your config file (and extracted). If that doesn't work run the macro as administrator.<br>
+- A: Make sure the macro is inside a folder with your config file (and extracted). On Linux, also check that your input/screenshot permissions are configured and that Wine is installed if the downloaded asset is `CoteabMacro.exe`.<br>
 
 - Q: The macro opens but it's only black / white??<br>
-- A: Re-install / Install Webview2; https://developer.microsoft.com/en-us/microsoft-edge/webview2/?form=MA13LH<br>
+- A: Prefer an X11 session and verify that your AppImage or native binary has executable permissions. If running the `.exe` fallback, verify that Wine can open the packaged app.<br>
 
 - Q: The macro searches the item up then closes out instantly??<br>
 - A: One of two things you can do -- Recalibrate OCR-failsafe, or turn off the option completely. If you still want a "failsafe", set your input delay to 1000-2000 milliseconds.
