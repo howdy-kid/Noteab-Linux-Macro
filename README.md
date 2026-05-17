@@ -34,6 +34,11 @@ python -m venv venv
 source venv/bin/activate
 pip install -r requirements.txt
 ```
+
+If you want the windows web gui run:
+```bash
+pip install -r requirements-webview.txt
+```
 After you made your virtual environment and downloaded all the requirements, simply run the macro
 ```bash
 ./venv/bin/python biome_activity_source.py
