@@ -25,7 +25,7 @@ mv main.zip Noteab-Linux-Macro
 ```
 After that, enter the macro's directory.
 ```bash
-cd
+cd Noteab-Linux-Macro
 ```
 You need a python virtual environment, so run the following commands:
 ```bash
