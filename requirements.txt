@@ -1,0 +1,16 @@
+requests>=2.28.0
+keyboard==0.13.5
+PyAutoGUI==0.9.54
+Pillow>=9.0.0
+pytesseract==0.3.13
+ttkbootstrap==1.10.1
+pyscreenrec
+pywinctl
+psutil>=5.9.0
+opencv-python-headless~=4.7
+numpy
+python-dotenv
+pynput>=1.7.7
+psutil>=5.9.0
+py-cord>=2.6.0
+pywebview>=5.0
