@@ -1,7 +1,7 @@
 # Noteab Linux Macro
 
 This just the Coteab/Noteab (Idek atp what its called) macro but ported to linux.
-I just added all the features and stuff from the Noteab-Macro to Root1527's Noteab Macro Linux. Some of the stuff Im still working on so don't expect everything (mainly the paths, my laptop that runs linux is super slow so I can't really debug things properly). ALSO THE F1/F2 BUTTONS DON'T WORK RN YOU NEED TO USE ROOT BUT THE GUI DOESN'T WORK WITH ROOT 
+I just added all the features and stuff from the Noteab-Macro to Root1527's Noteab Macro Linux. Some of the stuff Im still working on so don't expect everything (mainly the paths, my laptop that runs linux is super slow so I can't really debug things properly). ALSO THE F1/F2 BUTTONS DON'T WORK RN YOU NEED TO USE ROOT BUT THE GUI DOESN'T WORK WITH ROOT. Also note that unfortunately you need to either import a config file that contains the calibrations or set the calibrations yourself.
 
 # Installation
  
