@@ -13,9 +13,9 @@ and download git and python if you haven't done so already.
 ```bash
 sudo apt install git python
 ```
-Next, download this repository either by pulling it:
+Next, download this repository either by cloning it:
 ```bash
-git pull https://github.com/howdy-kid/Noteab-Linux-Macro.git
+git clone https://github.com/howdy-kid/Noteab-Linux-Macro.git
 ```
 or by using the network downloader:
 ```bash
